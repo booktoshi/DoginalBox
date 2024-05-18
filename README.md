@@ -73,7 +73,7 @@ Clone the repository containing the Docker setup files:
 
 ```sh
 git clone https://github.com/booktoshi/NodeRunnerDocker
-cd dogecoin-node-setup
+cd NodeRunnerDocker
 ```
 
 ### Step 3: Build the Docker Image
