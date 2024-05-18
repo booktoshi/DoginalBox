@@ -1,7 +1,7 @@
 
 # NODE RUNNER Dogecoin Node Docker Setup
 
-![Dogecoin Logo]([/booktoshi/NodeRunnerDocker/tree/main/logo])
+![Node Runners](images/logo.jpg)
 
 ## Overview
 
