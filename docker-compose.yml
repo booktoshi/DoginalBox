@@ -1,0 +1,15 @@
+
+version: '3.8'
+
+services:
+  dogecoin-node:
+    build: .
+    ports:
+      - "22556:22556"
+      - "22555:22555"
+    volumes:
+      - dogecoin-data:/dogecoin
+    restart: always
+
+volumes:
+  dogecoin-data:
