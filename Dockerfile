@@ -20,9 +20,13 @@ RUN dogecoind -daemon && \
 RUN mkdir -p /root/.dogecoin && \
     echo -e "rpcuser=user\nrpcpassword=pass\nrpcallowip=127.0.0.1\nmaxconnections=50\nrpcport=22555\nport=22556\nlisten=1\nserver=1\ndaemon=1\n" > /root/.dogecoin/dogecoin.conf
 
-# Install NVM and Node.js
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash && \
-    bash -c "source /root/.bashrc && nvm install stable"
+# Install NVM
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+
+# Ensure NVM is sourced correctly
+ENV NVM_DIR="/root/.nvm"
+ENV NODE_VERSION="stable"
+RUN /bin/bash -c "source $NVM_DIR/nvm.sh && nvm install $NODE_VERSION"
 
 # Clone Doginals repository
 RUN git clone https://github.com/booktoshi/doginals.git /root/doginals
