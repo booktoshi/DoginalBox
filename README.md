@@ -1,7 +1,7 @@
 
 # NODE RUNNER Dogecoin Node Docker Setup
 
-![Node Runners](images/logo.jpg)
+![Node Runners](images/docker.png)
 
 ## Overview
 
