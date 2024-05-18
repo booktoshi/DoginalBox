@@ -1,4 +1,3 @@
-
 # Dockerfile
 
 FROM ubuntu:20.04
@@ -10,19 +9,11 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Add Bitcoin repository
-RUN add-apt-repository ppa:bitcoin/bitcoin && \
-    apt-get update && \
-    apt-get install -y bitcoind
-
-# Install Dogecoin from source
-RUN git clone https://github.com/dogecoin/dogecoin.git && \
-    cd dogecoin && \
-    git checkout 1.14.5 && \
-    ./autogen.sh && \
-    ./configure --without-gui && \
-    make && \
-    make install
+# Install Dogecoin binaries
+RUN wget https://github.com/dogecoin/dogecoin/releases/download/v1.14.6/dogecoin-1.14.6-x86_64-linux-gnu.tar.gz && \
+    tar -xzvf dogecoin-1.14.6-x86_64-linux-gnu.tar.gz && \
+    cp dogecoin-1.14.6/bin/* /usr/local/bin/ && \
+    rm -rf dogecoin-1.14.6-x86_64-linux-gnu.tar.gz dogecoin-1.14.6
 
 # Create data directory
 RUN mkdir /dogecoin
