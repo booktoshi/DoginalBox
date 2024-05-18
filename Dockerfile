@@ -18,27 +18,21 @@ RUN dogecoind -daemon && \
 
 # Create and configure dogecoin.conf
 RUN mkdir -p /root/.dogecoin && \
-    echo -e "rpcuser=user\nrpcpassword=pass\nrpcallowip=127.0.0.1\nmaxconnections=50\nrpcport=22555\nserver=1" > /root/.dogecoin/dogecoin.conf
-
-# Start the Dogecoin node with the new configuration
-RUN dogecoind -daemon && \
-    sleep 10 && \
-    dogecoin-cli getblockchaininfo
+    echo -e "rpcuser=user\nrpcpassword=pass\nrpcallowip=127.0.0.1\nmaxconnections=50\nrpcport=22555\nport=22556\nlisten=1\nserver=1\ndaemon=1\n" > /root/.dogecoin/dogecoin.conf
 
 # Install NVM and Node.js
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash && \
-    . ~/.bashrc && \
-    nvm install stable
+    bash -c "source /root/.bashrc && nvm install stable"
 
 # Clone Doginals repository
-RUN git clone https://github.com/booktoshi/doginals.git
+RUN git clone https://github.com/booktoshi/doginals.git /root/doginals
+
+# Set the working directory
+WORKDIR /root
 
 # Add a script to manage the state and timer
 COPY manage.sh /usr/local/bin/manage.sh
 RUN chmod +x /usr/local/bin/manage.sh
-
-# Set the working directory
-WORKDIR /root
 
 # Start the state management script
 CMD ["sh", "-c", "/usr/local/bin/manage.sh"]
