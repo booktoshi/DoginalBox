@@ -72,7 +72,7 @@ Docker Compose is a tool for defining and running multi-container Docker applica
 Clone the repository containing the Docker setup files:
 
 ```sh
-git clone https://github.com/yourusername/dogecoin-node-setup.git
+git clone https://github.com/booktoshi/NodeRunnerDocker
 cd dogecoin-node-setup
 ```
 
