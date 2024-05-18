@@ -123,14 +123,6 @@ docker-compose up -d
 
 The state management script will ensure that the Dogecoin node starts and the installation resumes as needed.
 
-## Adding Pictures
-
-To add pictures, place your images in the appropriate directory and reference them in this README file as shown below:
-
-```markdown
-![Alt Text](path/to/image.png)
-```
-
 ## Troubleshooting
 
 If you encounter any issues, check the logs for more details:
