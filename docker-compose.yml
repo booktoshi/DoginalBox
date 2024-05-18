@@ -3,11 +3,12 @@ version: '3.8'
 services:
   dogecoin-node:
     build: .
+    container_name: dogecoin_node
     ports:
       - "22556:22556"
       - "22555:22555"
     volumes:
-      - dogecoin-data:/dogecoin
+      - dogecoin-data:/root/.dogecoin
     restart: always
 
 volumes:
