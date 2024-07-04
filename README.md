@@ -1,6 +1,7 @@
 
 # DoginalBox - Currently Updating Container. Check back for Updates in a couple of days.
 
+
 ## Overview
 
 This setup provides a Docker container that installs and configures a Dogecoin node, along with several utilities, and resumes installation even after a system restart. The container will detect the operating system and install the Dogecoin node accordingly.
@@ -32,72 +33,72 @@ Docker Compose is a tool for defining and running multi-container Docker applica
 
 1. Install Docker:
 
-   \`\`\`sh
+   ``sh
    sudo apt-get update
    sudo apt-get install        apt-transport-https        ca-certificates        curl        gnupg        lsb-release
 
    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
-   echo      "deb [arch=\$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu      \$(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   echo      "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu      $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
    sudo apt-get update
    sudo apt-get install docker-ce docker-ce-cli containerd.io
-   \`\`\`
+   ``
 
 2. Install Docker Compose:
 
-   \`\`\`sh
-   sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-\$(uname -s)-\$(uname -m)" -o /usr/local/bin/docker-compose
+   ``sh
+   sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
    sudo chmod +x /usr/local/bin/docker-compose
-   \`\`\`
+   ``
 
 3. Verify the installation:
 
-   \`\`\`sh
+   ``sh
    docker --version
    docker-compose --version
-   \`\`\`
+   ``
 
 ### Step 2: Clone the Repository
 
 Clone the repository containing the Docker setup files:
 
-\`\`\`sh
-git clone https://github.com/booktoshi/NodeRunnerDocker
-cd NodeRunnerDocker
-\`\`\`
+``sh
+git clone https://github.com/booktoshi/DoginalBox
+cd DoginalBox
+``
 
 ### Step 3: Build the Docker Image
 
 To build the Docker image, run the following command:
 
-\`\`\`sh
+``sh
 ./build.sh
-\`\`\`
+``
 
 ### Step 4: Run the Docker Container
 
 To start the Docker container, run the following command:
 
-\`\`\`sh
+``sh
 docker-compose up -d
-\`\`\`
+``
 
 ### Step 5: Verify Dogecoin Node Status
 
 To check the status of the Dogecoin node, run the following command:
 
-\`\`\`sh
+``sh
 docker exec -it dogecoin_node dogecoin-cli getblockchaininfo
-\`\`\`
+``
 
 ## Resuming Installation
 
 If the Docker container is stopped or the system is restarted, the installation can be resumed by starting the container again:
 
-\`\`\`sh
+``sh
 docker-compose up -d
-\`\`\`
+``
 
 The state management script will ensure that the Dogecoin node starts and the installation resumes as needed.
 
@@ -105,9 +106,9 @@ The state management script will ensure that the Dogecoin node starts and the in
 
 If you encounter any issues, check the logs for more details:
 
-\`\`\`sh
+``sh
 docker logs dogecoin_node
-\`\`\`
+``
 
 For further assistance, consult the documentation for Docker and Docker Compose.
 
