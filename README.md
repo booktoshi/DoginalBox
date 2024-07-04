@@ -1,5 +1,5 @@
 
-# NODE RUNNER Dogecoin Node Docker Setup - Currently Updating Container. Check back for Updates in a couple of days.
+# DoginalBox - Currently Updating Container. Check back for Updates in a couple of days.
 
 ![Node Runners](images/docker.png)
 
