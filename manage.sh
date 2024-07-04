@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Starting state management script..."
+
 # Start the Dogecoin node
 dogecoind -daemon
 
