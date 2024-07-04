@@ -91,19 +91,6 @@ To check the status of the Dogecoin node, run the following command:
 docker exec -it dogecoin_node dogecoin-cli getblockchaininfo
 \`\`\`
 
-## Utilities Included
-
-The following utilities are included and cloned into the doginals directory:
-
-- APE DUNES GUI
-- APE Image Converter
-- BC Auto Scripts
-- BC Snapshot
-- BCxHeim Recurse
-- BP MetaData Merger
-- BP TelegramBot
-- SirDuney DUNES
-
 ## Resuming Installation
 
 If the Docker container is stopped or the system is restarted, the installation can be resumed by starting the container again:
