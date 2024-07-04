@@ -2,7 +2,9 @@ version: '3.8'
 
 services:
   dogecoin-node:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: dogecoin_node
     ports:
       - "22556:22556"
@@ -11,5 +13,21 @@ services:
       - dogecoin-data:/root/.dogecoin
     restart: always
 
+  doginals:
+    depends_on:
+      - dogecoin-node
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: doginals
+    command: sh -c "/usr/local/bin/manage.sh"
+    volumes:
+      - doginals-data:/root/doginals
+    environment:
+      - NVM_DIR=/root/.nvm
+      - NODE_VERSION=stable
+    restart: always
+
 volumes:
   dogecoin-data:
+  doginals-data:
